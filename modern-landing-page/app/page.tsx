@@ -5,8 +5,11 @@ import Image from "next/image"
 import Link from "next/link"
 import { Instagram, Mail, Phone, MapPin } from "lucide-react"
 import { galleryImages } from "@/data/gallery"
+import { useIsMobile } from "@/hooks/use-mobile"
 
 export default function LandingPage() {
+  const isMobile = useIsMobile()
+  const [displayCount, setDisplayCount] = useState(isMobile ? 3 : 6)
   const [scrollPosition, setScrollPosition] = useState(0)
 
   useEffect(() => {
@@ -21,9 +24,18 @@ export default function LandingPage() {
     }
   }, [])
 
+  // Add this useEffect to handle mobile/desktop changes
+  useEffect(() => {
+    setDisplayCount(isMobile ? 3 : 6)
+  }, [isMobile])
+
   // Calculate opacity for the background transition
   const heroOpacity = Math.max(0, 1 - scrollPosition / 500)
   const blackBgOpacity = Math.min(1, scrollPosition / 500)
+
+  const handleLoadMore = () => {
+    setDisplayCount(prev => prev + (isMobile ? 3 : 6))
+  }
 
   return (
     <div className="relative min-h-screen">
@@ -109,7 +121,7 @@ export default function LandingPage() {
           <div className="container mx-auto px-4">
             <h2 className="text-4xl text-white mb-12 text-center">Our Gallery</h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
-              {galleryImages.map((image, index) => (
+              {galleryImages.slice(0, displayCount).map((image, index) => (
                 <div
                   key={index}
                   className="aspect-square bg-white/5 rounded-md overflow-hidden hover:bg-white/10 transition-colors md:p-0"
@@ -124,6 +136,17 @@ export default function LandingPage() {
                 </div>
               ))}
             </div>
+
+            {displayCount < galleryImages.length && (
+              <div className="flex justify-center mt-8">
+                <button
+                  onClick={handleLoadMore}
+                  className="bg-white/10 hover:bg-white/20 text-white px-6 py-2 rounded-md transition-colors"
+                >
+                  Load More
+                </button>
+              </div>
+            )}
           </div>
         </div>
 
