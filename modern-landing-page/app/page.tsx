@@ -4,6 +4,7 @@ import { useState, useEffect } from "react"
 import Image from "next/image"
 import Link from "next/link"
 import { Instagram, Mail, Phone, MapPin } from "lucide-react"
+import { galleryImages } from "@/data/gallery"
 
 export default function LandingPage() {
   const [scrollPosition, setScrollPosition] = useState(0)
@@ -108,18 +109,23 @@ export default function LandingPage() {
           <div className="container mx-auto px-4">
             <h2 className="text-4xl text-white mb-12 text-center">Our Gallery</h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
-              {Array.from({ length: 9 }).map((_, index) => (
+              {galleryImages.map((image, index) => (
                 <div
                   key={index}
                   className="aspect-square bg-white/5 rounded-md overflow-hidden hover:bg-white/10 transition-colors md:p-0"
                 >
                   <Image
-                    src={`/placeholder.svg?height=600&width=600&text=Gallery+Image+${index + 1}`}
-                    alt={`Gallery image ${index + 1}`}
+                    src={image.src}
+                    alt={image.alt}
                     width={600}
                     height={600}
                     className="w-full h-full object-cover"
                   />
+                  {image.title && (
+                    <div className="absolute inset-0 flex items-end p-4 bg-gradient-to-t from-black/60 to-transparent opacity-0 hover:opacity-100 transition-opacity">
+                      <h3 className="text-white text-lg font-semibold">{image.title}</h3>
+                    </div>
+                  )}
                 </div>
               ))}
             </div>
