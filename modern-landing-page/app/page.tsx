@@ -62,9 +62,9 @@ export default function LandingPage() {
             <Link
               href="https://instagram.com/jag_putters"
               target="_blank"
-              className="p-2 rounded-full bg-white/10 backdrop-blur-md hover:bg-white/20 transition-colors"
+              className="p-2 rounded-full hover:opacity-90 transition-opacity"
             >
-              <Instagram className="w-6 h-6 text-white" />
+              <Instagram className="w-6 h-6 text-[#E1306C]" />
               <span className="sr-only">Instagram</span>
             </Link>
           </div>
@@ -111,7 +111,7 @@ export default function LandingPage() {
               {Array.from({ length: 9 }).map((_, index) => (
                 <div
                   key={index}
-                  className="aspect-square bg-white/5 rounded-md overflow-hidden hover:bg-white/10 transition-colors"
+                  className="aspect-square bg-white/5 rounded-md overflow-hidden hover:bg-white/10 transition-colors md:p-0"
                 >
                   <Image
                     src={`/placeholder.svg?height=600&width=600&text=Gallery+Image+${index + 1}`}
@@ -132,9 +132,21 @@ export default function LandingPage() {
             src="/golfcourse3.jpg"
             alt="Golf course view"
             fill
-            className="object-cover object-cover"
+            className="object-cover"
           />
           <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/30 to-black/60"></div>
+
+          {/* Logo overlay */}
+          <div className="absolute inset-0 flex items-center justify-center">
+            <div className="relative w-40 h-40 md:w-60 md:h-60">
+              <Image
+                src="/wings-logo.png"
+                alt="Jag Putters Logo"
+                fill
+                className="object-contain opacity-70"
+              />
+            </div>
+          </div>
         </div>
 
         {/* Contact section */}

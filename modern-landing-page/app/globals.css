@@ -4,10 +4,24 @@
 
 html {
   scroll-behavior: smooth;
+  font-size: 75%; /* Base 75% font size for mobile */
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 100%; /* Reset to full size for desktop */
+  }
 }
 
 body {
   @apply bg-black text-foreground font-cormorant;
+}
+
+/* Add mobile-specific gallery padding */
+@media (max-width: 767px) {
+  .aspect-square {
+    @apply p-2; /* Add padding to gallery items on mobile */
+  }
 }
 
 h1,
