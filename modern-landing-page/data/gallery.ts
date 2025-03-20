@@ -21,7 +21,7 @@ export const galleryImages: GalleryImage[] = [
     title: "Latitude65 x JAG"
   },
   {
-    src: "/gallery/proto.jpg",
+    src: "/gallery/proto.png",
     alt: "Premium putters",
     title: "2024 Prototype"
   },
@@ -64,5 +64,20 @@ export const galleryImages: GalleryImage[] = [
     src: "/gallery/workshop.jpg",
     alt: "Premium putters",
     title: "Workshop"
+  },
+  {
+    src: "/gallery/tre.jpg",
+    alt: "Premium putters",
+    title: "Tampere"
+  },
+  {
+    src: "/gallery/sweden.jpg",
+    alt: "Premium putters",
+    title: "Sweden"
+  },
+  {
+    src: "/gallery/ballmarkers.jpg",
+    alt: "Premium putters",
+    title: "Ballmarkers"
   },
 ];

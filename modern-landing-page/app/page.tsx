@@ -121,11 +121,6 @@ export default function LandingPage() {
                     height={600}
                     className="w-full h-full object-cover"
                   />
-                  {image.title && (
-                    <div className="absolute inset-0 flex items-end p-4 bg-gradient-to-t from-black/60 to-transparent opacity-0 hover:opacity-100 transition-opacity">
-                      <h3 className="text-white text-lg font-semibold">{image.title}</h3>
-                    </div>
-                  )}
                 </div>
               ))}
             </div>
